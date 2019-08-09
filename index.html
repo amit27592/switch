@@ -40,7 +40,7 @@
     </div>
     <div class="w3-bar-block">
       <a href="#showcase" onclick="w3_close();scroll('showcase');"
-        class="w3-bar-item w3-button w3-hover-white w3-text-white">Do the thing</a>
+        class="w3-bar-item w3-button w3-hover-white w3-text-white">Injector</a>
       <a href="#instructions" onclick="w3_close()"
         class="w3-bar-item w3-button w3-hover-white w3-text-white">Instructions</a>
       <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-text-white">About</a>
@@ -50,7 +50,7 @@
   <!-- Top menu on small screens -->
   <header class="w3-container w3-top w3-hide-large switchbru w3-xlarge w3-padding">
     <a href="javascript:void(0)" class="w3-button switchbru w3-margin-right w3-text-white" onclick="w3_open()">☰</a>
-    <span class="w3-text-white">Amit</span>
+    <span class="w3-text-white">Switch RCM Injector</span>
   </header>
 
   <!-- Overlay effect when opening sidebar on small screens -->
@@ -62,18 +62,17 @@
 
     <!-- Header -->
     <div class="w3-container" style="margin-top:80px" id="showcase">
-      <h1 class="w3-xxlarge"><b>Web Fusée Launcher</b></h1>
-      <h1 class="w3-xlarge w3-text-blue-grey"><b>Choose a Payload :</b></h1>
+      <h1 class="w3-xxlarge"><b>Amit's RCM Launcher</b></h1>
+      <h1 class="w3-xlarge w3-text-blue-grey"><b>Pick a payload :</b></h1>
       <hr style="width:50px;border:3px solid grey" class="w3-round">
       <form id="mainForm">
         <p>
-          <input class="w3-radio" type="radio" name="payload" id="memloader.bin" value="memloader.bin">
-          <label for="hekate_ctcaer_5.0.0">hekate_ctcaer_5.0.0 (<a
-              href="https://switchtools.sshnuke.net">v1</a>)</label>
+          <input class="w3-radio" type="radio" name="payload" id="hekate_ctcaer_5.0.0.bin" value="hekate_ctcaer_5.0.0.bin">
+          <label for="hekate_ctcaer_5.0.0.bin">Hekate</label>
         </p>
         <p>
-          <input class="w3-radio" type="radio" name="payload" id="briccmii.bin" value="briccmii.bin">
-          <label for="sxos.bin">sxos (<a href="https://switchtools.sshnuke.net">v2</a>)</label>
+          <input class="w3-radio" type="radio" name="payload" id="sxos.bin" value="sxos.bin">
+          <label for="sxos.bin">SXOS</label>
         </p>
         <p>
           <input class="w3-radio" type="radio" name="payload" id="uploaded" value="uploaded">
@@ -82,8 +81,7 @@
         </p>
       </form>
 
-      <button id="goButton" class="w3-button w3-block w3-padding-large switchbru w3-margin-bottom w3-text-white">Do the
-        thing!</button>
+      <button id="goButton" class="w3-button w3-block w3-padding-large switchbru w3-margin-bottom w3-text-white">Inject</button>
 
       <div id="results">
         <h3>Result:</h3>
@@ -101,8 +99,8 @@
         <ol>
           <li>Put the Switch in RCM and connect it to your device. (Insert your jig into right-joycon rail and hold
             volume-up while powering it on)</li>
-          <li>Select one of the example payloads, or upload one.</li>
-          <li>Press 'Do the thing!'</li>
+          <li>Select one of the payloads, or upload one.</li>
+          <li>Press 'Inject'</li>
           <li>On the consent screen that appears, select 'APX' and hit confirm. If APX does not appear, ensure your
             device is in RCM and connected.</li>
           <li>If all goes well, the payload will launch!</li>
@@ -114,11 +112,11 @@
     <div class="w3-container" id="about" style="margin-top:75px">
       <h1 class="w3-xxxlarge w3-text-blue-grey"><b>About.</b></h1>
       <hr style="width:50px;border:3px solid grey" class="w3-round">
-      <p>Fusee Launcher ported to JavaScript using WebUSB.</p>
+      <p>Custom version of Fusee Launcher ported to JavaScript using WebUSB.</p>
       <p>
-        Source can be found on <a href="https://github.com/fortheusers/switch.exploit">GitHub</a> under the MIT license
+        Source can be found on <a href="https://github.com/amit27592/switch.exploit">GitHub</a> under the MIT license
         (or by hitting view source, there is no backend!).
-        Ported from <a href="https://github.com/reswitched/fusee-launcher">fusee-launcher</a>.
+        Forked from <a href="https://github.com/fortheusers/switch.exploit">switch.exploit</a> which in turn was ported from <a href="https://github.com/reswitched/fusee-launcher">fusee-launcher</a>.
         Thanks to ktemkin and ReSwitched for Fusée Gelée and a ton of other things!
         Web exploit code developed by <a href="https://github.com/atlas44/web-fusee-launcher">atlas44</a>.
       </p>
@@ -129,8 +127,8 @@
 
   <!-- W3.CSS Container -->
   <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
-    <p class="w3-right">Powered by <a href="https://fortheusers.org/" title="fortheusers.org" target="_blank"
-        class="w3-hover-opacity">fortheusers.org</a></p>
+    <p class="w3-right">Powered by <a href="https://github.com/" title="GitHub.com" target="_blank"
+        class="w3-hover-opacity">GitHub</a></p>
   </div>
 
   <script>
