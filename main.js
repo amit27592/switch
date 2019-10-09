@@ -75,34 +75,43 @@ function logOutput(...message) {
 let device;
 
 async function launchPayload(payload) {
-  await device.open();
-  logOutput(`Connected to ${device.manufacturerName} ${device.productName}`);
-
-  await device.claimInterface(0);
-
-  const deviceID = await device.transferIn(1, 16);
-  logOutput(`Device ID: ${bufferToHex(deviceID.data)}`);
-
-
-  const rcmPayload = createRCMPayload(intermezzo, payload);
-  logOutput("Sending payload...");
-  const writeCount = await write(device, rcmPayload);
-  logOutput("Payload sent!");
-
-  if (writeCount % 2 !== 1) {
-    logOutput("Switching to higher buffer...");
-    await device.transferOut(1, new ArrayBuffer(0x1000));
+  try {
+    await device.open();
+    logOutput(`Connected to ${device.manufacturerName} ${device.productName}`);
+  
+    if (device.configuration === null)
+      await device.selectConfiguration(1);
+  
+    await device.claimInterface(0);
+  
+    const deviceID = await device.transferIn(1, 16);
+    logOutput(`Device ID: ${bufferToHex(deviceID.data)}`);
+  
+  
+    const rcmPayload = createRCMPayload(intermezzo, payload);
+    logOutput("Sending payload...");
+    const writeCount = await write(device, rcmPayload);
+    logOutput("Payload sent!");
+  
+    if (writeCount % 2 !== 1) {
+      logOutput("Switching to higher buffer...");
+      await device.transferOut(1, new ArrayBuffer(0x1000));
+    }
+  
+    logOutput("Trigging vulnerability...");
+    const vulnerabilityLength = 0x7000;
+    const smash = await device.controlTransferIn({
+      requestType: 'standard',
+      recipient: 'interface',
+      request: 0x00,
+      value: 0x00,
+      index: 0x00
+    }, vulnerabilityLength);
+  } catch (e) {
+    logOutput("Error:", e.toString())
   }
+  
 
-  logOutput("Trigging vulnerability...");
-  const vulnerabilityLength = 0x7000;
-  const smash = await device.controlTransferIn({
-    requestType: 'standard',
-    recipient: 'interface',
-    request: 0x00,
-    value: 0x00,
-    index: 0x00
-  }, vulnerabilityLength);
 }
 
 document.getElementById("goButton").addEventListener("click", async () => {
