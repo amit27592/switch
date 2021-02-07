@@ -108,7 +108,7 @@ async function launchPayload(payload) {
       index: 0x00
     }, vulnerabilityLength);
   } catch (e) {
-    logOutput("Error:", e.toString())
+    // logOutput("Error:", e.toString())
   }
   
 
